@@ -17,37 +17,36 @@
       --bg: #0f172a;
       --bg2: #1e293b;
       --bg3: #334155;
-      --border: #475569;
-      --accent: #3b82f6;
-      --accent2: #60a5fa;
-      --aglow: rgba(59, 130, 246, 0.25);
+      --bdr: #475569;
+      --acc: #3b82f6;
+      --acc2: #60a5fa;
+      --aglo: rgba(59, 130, 246, 0.25);
       --ok: #22c55e;
       --warn: #f59e0b;
       --err: #ef4444;
-      --text: #f1f5f9;
-      --text2: #94a3b8;
-      --text3: #cbd5e1;
-      --shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+      --tx: #f1f5f9;
+      --tx2: #94a3b8;
+      --tx3: #cbd5e1;
+      --shd: 0 4px 24px rgba(0, 0, 0, 0.45);
       --r: 14px;
       --rs: 8px;
     }
 
-    /* 白色模式 */
     body.light {
       --bg: #f0f4f8;
       --bg2: #ffffff;
       --bg3: #e2e8f0;
-      --border: #94a3b8;
-      --accent: #1d4ed8;
-      --accent2: #2563eb;
-      --aglow: rgba(29, 78, 216, 0.15);
+      --bdr: #94a3b8;
+      --acc: #1d4ed8;
+      --acc2: #2563eb;
+      --aglo: rgba(29, 78, 216, 0.15);
       --ok: #15803d;
       --warn: #b45309;
       --err: #b91c1c;
-      --text: #0f172a;
-      --text2: #475569;
-      --text3: #334155;
-      --shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      --tx: #0f172a;
+      --tx2: #475569;
+      --tx3: #334155;
+      --shd: 0 4px 24px rgba(0, 0, 0, 0.12);
     }
 
     * {
@@ -63,18 +62,17 @@
     body {
       font-family: 'Noto Sans TC', sans-serif;
       font-size: 17px;
-      /* 字放大 */
       background: var(--bg);
-      color: var(--text);
+      color: var(--tx);
       min-height: 100vh;
       padding-bottom: 60px;
       transition: background .25s, color .25s;
     }
 
-    /* ── Header ── */
+    /* Header */
     .header {
       background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 60%);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--bdr);
       padding: 18px 20px;
       display: flex;
       align-items: center;
@@ -85,19 +83,19 @@
     }
 
     body.light .header {
-      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+      background: linear-gradient(135deg, #1e40af, #1e3a8a);
     }
 
-    .header-left {
+    .hleft {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .header-icon {
+    .hico {
       width: 46px;
       height: 46px;
-      background: linear-gradient(135deg, var(--accent), #818cf8);
+      background: linear-gradient(135deg, var(--acc), #818cf8);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -119,8 +117,7 @@
       margin-top: 2px;
     }
 
-    /* 黑白切換按鈕 */
-    .theme-btn {
+    .tbtn {
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 30px;
@@ -129,59 +126,55 @@
       font-family: 'Noto Sans TC', sans-serif;
       font-size: 0.85rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: background .2s;
       white-space: nowrap;
+      transition: background .2s;
     }
 
-    .theme-btn:hover {
+    .tbtn:hover {
       background: rgba(255, 255, 255, 0.25);
     }
 
-    /* ── Container ── */
+    /* Container & Card */
     .container {
       max-width: 700px;
       margin: 0 auto;
       padding: 20px 16px;
     }
 
-    /* ── Card ── */
     .card {
       background: var(--bg2);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       border-radius: var(--r);
       padding: 22px 20px;
       margin-bottom: 16px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shd);
       transition: background .25s, border-color .25s;
     }
 
-    .card-title {
+    .ctit {
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent2);
+      color: var(--acc2);
       margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .card-title::before {
+    .ctit::before {
       content: '';
       width: 3px;
       height: 15px;
-      background: var(--accent);
+      background: var(--acc);
       border-radius: 2px;
     }
 
-    /* ── API bar ── */
-    .api-bar {
+    /* API bar */
+    .abar {
       background: var(--bg3);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       border-radius: var(--rs);
       padding: 11px 14px;
       display: flex;
@@ -189,23 +182,27 @@
       gap: 5px;
     }
 
-    .api-bar label {
+    .abar label {
       font-size: 0.75rem;
-      color: var(--text2);
+      color: var(--tx2);
       font-weight: 600;
     }
 
-    .api-bar input {
+    .abar input {
       background: transparent;
       border: none;
-      color: var(--text);
+      color: var(--tx);
       font-size: 0.85rem;
       font-family: 'Courier New', monospace;
       outline: none;
       width: 100%;
     }
 
-    /* ── Field row ── */
+    .abar input::placeholder {
+      color: var(--tx2);
+    }
+
+    /* Field rows */
     .row {
       display: flex;
       gap: 12px;
@@ -213,7 +210,7 @@
       margin-bottom: 16px;
     }
 
-    .field {
+    .fld {
       display: flex;
       flex-direction: column;
       gap: 7px;
@@ -221,28 +218,35 @@
       min-width: 140px;
     }
 
-    .field label {
+    .fld label {
       font-size: 0.78rem;
-      color: var(--text2);
+      color: var(--tx2);
       font-weight: 600;
     }
 
-    /* ── Inputs ── */
+    /* Inputs */
     input[type="date"],
     input[type="time"],
     input[type="number"],
     input[type="text"],
     textarea {
       background: var(--bg3);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       border-radius: var(--rs);
-      color: var(--text);
+      color: var(--tx);
       font-family: 'Noto Sans TC', sans-serif;
       font-size: 1rem;
       padding: 11px 13px;
       outline: none;
       width: 100%;
       transition: border-color .2s, box-shadow .2s;
+    }
+
+    /* placeholder 灰字 */
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--tx2);
+      opacity: 1;
     }
 
     input[type="date"]::-webkit-calendar-picker-indicator,
@@ -258,8 +262,8 @@
 
     input:focus,
     textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--aglow);
+      border-color: var(--acc);
+      box-shadow: 0 0 0 3px var(--aglo);
     }
 
     input[type="number"] {
@@ -267,7 +271,7 @@
       appearance: textfield;
     }
 
-    /* ── AM/PM badge ── */
+    /* AM/PM badge */
     .tw {
       position: relative;
     }
@@ -277,7 +281,7 @@
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--accent);
+      background: var(--acc);
       color: #fff;
       font-size: 0.7rem;
       font-weight: 700;
@@ -290,66 +294,64 @@
       background: #7c3aed;
     }
 
-    /* ── Interval grid ── */
-    .ivgrid {
+    /* Interval */
+    .ivg {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
     }
 
-    .ivitem {
+    .ivi {
       background: var(--bg3);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       border-radius: var(--rs);
       padding: 12px 8px 8px;
       text-align: center;
-      transition: background .25s;
     }
 
-    .ivitem label {
+    .ivi label {
       font-size: 0.75rem;
-      color: var(--text2);
+      color: var(--tx2);
       font-weight: 600;
       display: block;
       margin-bottom: 6px;
     }
 
-    .ivitem input {
+    .ivi input {
       text-align: center;
       font-size: 1.15rem;
       font-weight: 700;
-      color: var(--accent2);
+      color: var(--acc2);
       background: transparent;
       border: none;
       padding: 0;
       width: 100%;
     }
 
-    .ivitem input:focus {
+    .ivi input:focus {
       box-shadow: none;
     }
 
-    .iv-hint {
+    .ivh {
       font-size: 0.78rem;
-      color: var(--text2);
+      color: var(--tx2);
       margin-top: 12px;
       text-align: center;
     }
 
-    .iv-hint span {
+    .ivh span {
       color: var(--warn);
       font-weight: 600;
     }
 
-    /* ── Textarea ── */
+    /* Textarea */
     textarea {
       resize: vertical;
       min-height: 70px;
-      font-size: 1rem;
     }
 
-    /* ── Buttons ── */
-    .btn-row {
+    /* Buttons */
+    .brow {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -377,22 +379,12 @@
       transform: scale(0.97);
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #6366f1);
-      color: #fff;
-      box-shadow: 0 4px 14px var(--aglow);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 6px 22px var(--aglow);
-    }
-
-    .btn-success {
+    .btn-s {
       background: linear-gradient(135deg, #16a34a, #15803d);
       color: #fff;
     }
 
-    .btn-danger {
+    .btn-d {
       background: linear-gradient(135deg, #dc2626, #b91c1c);
       color: #fff;
     }
@@ -403,7 +395,7 @@
       transform: none;
     }
 
-    /* ── Preview table ── */
+    /* Preview */
     .prev-wrap {
       overflow-x: auto;
       border-radius: var(--rs);
@@ -417,18 +409,18 @@
 
     thead th {
       background: var(--bg3);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       padding: 9px 10px;
       text-align: center;
-      color: var(--accent2);
+      color: var(--acc2);
       font-weight: 700;
       white-space: nowrap;
     }
 
     tbody td {
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       padding: 8px 11px;
-      color: var(--text3);
+      color: var(--tx3);
       white-space: nowrap;
     }
 
@@ -437,7 +429,7 @@
     }
 
     .ca {
-      color: var(--text);
+      color: var(--tx);
       font-weight: 500;
     }
 
@@ -448,16 +440,24 @@
     }
 
     .cc {
-      color: var(--text2);
+      color: var(--tx2);
     }
 
     .rn {
-      color: var(--text2);
+      color: var(--tx2);
       text-align: center;
       font-size: 0.8rem;
     }
 
-    /* ── Pills ── */
+    /* Hint text inside preview */
+    .phint {
+      text-align: center;
+      color: var(--tx2);
+      padding: 24px 0;
+      font-size: 0.95rem;
+    }
+
+    /* Pills */
     .pills {
       display: flex;
       gap: 8px;
@@ -467,15 +467,15 @@
 
     .pill {
       background: var(--bg3);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       border-radius: 20px;
       padding: 4px 13px;
       font-size: 0.8rem;
-      color: var(--text2);
+      color: var(--tx2);
     }
 
     .pill b {
-      color: var(--text);
+      color: var(--tx);
     }
 
     .wpill {
@@ -488,18 +488,18 @@
       color: var(--warn);
     }
 
-    /* ── Toast ── */
+    /* Toast */
     #toast {
       position: fixed;
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
       background: var(--bg3);
-      border: 1px solid var(--border);
+      border: 1px solid var(--bdr);
       border-radius: 40px;
       padding: 11px 24px;
       font-size: 0.95rem;
-      color: var(--text);
+      color: var(--tx);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       transition: transform .35s cubic-bezier(.16, 1, .3, 1);
       z-index: 200;
@@ -522,9 +522,8 @@
       border-color: var(--warn);
     }
 
-    /* ── Responsive ── */
     @media (max-width:480px) {
-      .ivgrid {
+      .ivg {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -538,22 +537,22 @@
 <body>
 
   <header class="header">
-    <div class="header-left">
-      <div class="header-icon">📅</div>
+    <div class="hleft">
+      <div class="hico">📅</div>
       <div>
         <h1>排程寫入 Google Sheet</h1>
         <sub>自動產生日期排程並寫入試算表</sub>
       </div>
     </div>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 白色模式</button>
+    <button class="tbtn" id="themeBtn" onclick="toggleTheme()">☀️ 白色模式</button>
   </header>
 
   <div class="container">
 
     <!-- Apps Script URL -->
     <div class="card">
-      <div class="card-title">⚙ Apps Script 設定</div>
-      <div class="api-bar">
+      <div class="ctit">⚙ Apps Script 設定</div>
+      <div class="abar">
         <label>網頁應用程式 URL</label>
         <input type="text" id="apiUrl" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off">
       </div>
@@ -561,30 +560,30 @@
 
     <!-- 日期 & 時間 -->
     <div class="card">
-      <div class="card-title">📆 開始 / 結束 日期時間</div>
+      <div class="ctit">📆 開始 / 結束 日期時間</div>
       <div class="row">
-        <div class="field">
+        <div class="fld">
           <label>開始日期</label>
           <input type="date" id="startDate">
         </div>
-        <div class="field">
+        <div class="fld">
           <label>開始時間</label>
           <div class="tw">
-            <input type="time" id="startTime" value="00:00" oninput="refreshAmpm()">
-            <span class="ampm" id="startAmpm">上午</span>
+            <input type="time" id="startTime" oninput="refreshAmpm()">
+            <span class="ampm" id="startAmpm" style="display:none"></span>
           </div>
         </div>
       </div>
       <div class="row" style="margin-bottom:0">
-        <div class="field">
+        <div class="fld">
           <label>結束日期</label>
           <input type="date" id="endDate">
         </div>
-        <div class="field">
+        <div class="fld">
           <label>結束時間</label>
           <div class="tw">
-            <input type="time" id="endTime" value="00:00" oninput="refreshAmpm()">
-            <span class="ampm" id="endAmpm">上午</span>
+            <input type="time" id="endTime" oninput="refreshAmpm()">
+            <span class="ampm" id="endAmpm" style="display:none"></span>
           </div>
         </div>
       </div>
@@ -592,35 +591,35 @@
 
     <!-- 間隔 -->
     <div class="card">
-      <div class="card-title">🔁 間隔設定（預設 0月 1日 0小時 0分鐘）</div>
-      <div class="ivgrid">
-        <div class="ivitem"><label>月</label><input type="number" id="iM" min="0" value="0" oninput="ivHint()"></div>
-        <div class="ivitem"><label>日</label><input type="number" id="iD" min="0" value="1" oninput="ivHint()"></div>
-        <div class="ivitem"><label>小時</label><input type="number" id="iH" min="0" value="0" oninput="ivHint()"></div>
-        <div class="ivitem"><label>分鐘</label><input type="number" id="iN" min="0" value="0" oninput="ivHint()"></div>
+      <div class="ctit">🔁 間隔設定（預設 0月 1日 0小時 0分鐘）</div>
+      <div class="ivg">
+        <div class="ivi"><label>月</label><input type="number" id="iM" min="0" value="0" oninput="ivHint()"></div>
+        <div class="ivi"><label>日</label><input type="number" id="iD" min="0" value="1" oninput="ivHint()"></div>
+        <div class="ivi"><label>小時</label><input type="number" id="iH" min="0" value="0" oninput="ivHint()"></div>
+        <div class="ivi"><label>分鐘</label><input type="number" id="iN" min="0" value="0" oninput="ivHint()"></div>
       </div>
-      <p class="iv-hint">目前間隔：<span id="ivSpan">0月 1日 0小時 0分鐘</span></p>
+      <p class="ivh">目前間隔：<span id="ivSpan">0月 1日 0小時 0分鐘</span></p>
     </div>
 
     <!-- C 欄 -->
     <div class="card">
-      <div class="card-title">📝 C 欄內容（每筆相同）</div>
+      <div class="ctit">📝 C 欄內容（每筆相同）</div>
       <textarea id="colC" placeholder="輸入要填入 C 欄的文字"></textarea>
     </div>
 
     <!-- 按鈕 -->
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="doPreview()">🔍 預覽</button>
-      <button class="btn btn-success" id="sendBtn" onclick="doSend()" disabled>🚀 寫入 Google Sheet</button>
-      <button class="btn btn-danger" onclick="doClear()">🗑 清除</button>
+    <div class="brow">
+      <button class="btn btn-s" id="sendBtn" onclick="doSend()" disabled>🚀 寫入 Google Sheet</button>
+      <button class="btn btn-d" onclick="doClear()">🗑 清除</button>
     </div>
 
-    <!-- 預覽 -->
-    <div class="card" id="prevCard" style="display:none">
-      <div class="card-title">📊 預覽結果</div>
+    <!-- 預覽（常駐顯示） -->
+    <div class="card">
+      <div class="ctit">📊 即時預覽</div>
       <div class="pills" id="pillRow"></div>
       <div class="prev-wrap">
-        <table>
+        <p class="phint" id="prevHint">請填寫上方日期、時間與間隔，結果將即時顯示於此。</p>
+        <table id="prevTable" style="display:none">
           <thead>
             <tr>
               <th style="width:38px">列</th>
@@ -639,189 +638,185 @@
   <div id="toast"></div>
 
   <script>
-    /* ══ 主題切換 ══════════════════════════════════════════════════ */
+    /* ── 主題切換 ─────────────────────────────────────────── */
     function toggleTheme() {
       document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      document.getElementById('themeBtn').textContent = isLight ? '🌙 深色模式' : '☀️ 白色模式';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const isL = document.body.classList.contains('light');
+      document.getElementById('themeBtn').textContent = isL ? '🌙 深色模式' : '☀️ 白色模式';
+      localStorage.setItem('theme', isL ? 'light' : 'dark');
     }
 
-    /* ══ 初始化 ════════════════════════════════════════════════════ */
+    /* ── 初始化 ───────────────────────────────────────────── */
     window.addEventListener('DOMContentLoaded', () => {
-      // 主題
       if (localStorage.getItem('theme') === 'light') toggleTheme();
 
-      // 預設日期
-      const today = new Date();
-      document.getElementById('startDate').value = fmtD(today);
-      const end = new Date(today);
-      end.setMonth(end.getMonth() + 1);
-      document.getElementById('endDate').value = fmtD(end);
-
-      refreshAmpm();
-      ivHint();
-
-      // 儲存 URL
       const u = localStorage.getItem('gs_url');
       if (u) document.getElementById('apiUrl').value = u;
       document.getElementById('apiUrl').addEventListener('input', e =>
         localStorage.setItem('gs_url', e.target.value.trim()));
 
-      // SW
       if ('serviceWorker' in navigator)
         navigator.serviceWorker.register('./sw.js').catch(() => { });
+
+      // 即時更新：監聽所有輸入欄位
+      ['startDate', 'startTime', 'endDate', 'endTime', 'iM', 'iD', 'iH', 'iN', 'colC'].forEach(id => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', autoPreview);
+        el.addEventListener('change', autoPreview);
+      });
     });
 
-    function fmtD(d) {
-      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-    }
     function pad(n) { return String(n).padStart(2, '0'); }
+    function fmtD(d) { return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
 
-    /* ══ AM/PM 徽章 ═══════════════════════════════════════════════ */
+    /* ── AM/PM 標籤 ──────────────────────────────────────── */
     function refreshAmpm() {
       setAmpm('startTime', 'startAmpm');
       setAmpm('endTime', 'endAmpm');
     }
-    function setAmpm(inputId, badgeId) {
-      const v = document.getElementById(inputId).value;
-      if (!v) return;
+    function setAmpm(tId, bId) {
+      const v = document.getElementById(tId).value;
+      const el = document.getElementById(bId);
+      if (!v) { el.style.display = 'none'; return; }
       const h = parseInt(v.split(':')[0], 10);
-      const el = document.getElementById(badgeId);
+      el.style.display = '';
       el.textContent = h < 12 ? '上午' : '下午';
       el.className = 'ampm' + (h < 12 ? '' : ' pm');
     }
 
-    /* ══ 間隔提示 ═════════════════════════════════════════════════ */
+    /* ── 間隔提示 ─────────────────────────────────────────── */
     function ivHint() {
       const [M, D, H, N] = getIv();
       document.getElementById('ivSpan').textContent = `${M}月 ${D}日 ${H}小時 ${N}分鐘`;
     }
     function getIv() {
-      return [
-        +document.getElementById('iM').value || 0,
-        +document.getElementById('iD').value || 0,
-        +document.getElementById('iH').value || 0,
-        +document.getElementById('iN').value || 0,
-      ];
+      return [+document.getElementById('iM').value || 0,
+      +document.getElementById('iD').value || 0,
+      +document.getElementById('iH').value || 0,
+      +document.getElementById('iN').value || 0];
     }
 
-    /* ══ 格式化 A 欄 ══════════════════════════════════════════════ */
-    // 輸入：Date 物件（含時間），輸出：「2026/5/31 上午 5:00」
+    /* ── 格式化 A 欄 ─────────────────────────────────────── */
     function fmtA(dt) {
-      const y = dt.getFullYear();
-      const mo = dt.getMonth() + 1;
-      const d = dt.getDate();
-      const h24 = dt.getHours();
-      const m = dt.getMinutes();
-      const isAm = h24 < 12;
-      const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+      const y = dt.getFullYear(), mo = dt.getMonth() + 1, d = dt.getDate();
+      const h24 = dt.getHours(), m = dt.getMinutes();
+      const isAm = h24 < 12, h12 = h24 % 12 === 0 ? 12 : h24 % 12;
       return `${y}/${mo}/${d} ${isAm ? '上午' : '下午'} ${h12}:${pad(m)}`;
     }
 
-    /* ══ 核心：產生排程 ════════════════════════════════════════════
-      邏輯：
-      ① 取得「每日的時間區間」—— startTime 到 endTime  
-      ② 取得「日期步進」—— 月 / 日 間隔  
-      ③ 取得「時間步進」—— 小時 / 分鐘 間隔
+    /* ── 產生排程 ─────────────────────────────────────────── */
+    /*
+      情境 A：只有日/月間隔（時間步進=0）
+        → 每個步進日期 × startTime，直到 endDate+endTime
     
-      情境 A：只有日期間隔（時間步進=0）
-        → 每個步進日期 × startTime，到 endDate 為止
+      情境 B：只有小時/分鐘步進（日/月=0）
+        → 從 startDt 每步進，直到 endDt
     
-      情境 B：只有時間步進（日期步進=0）
-        → 從 startDt 每次加時間步進，直到 endDt
-    
-      情境 C：日期間隔 + 時間步進（如範例）
-        → 對每個步進日期，從 startTime 到 endTime 每步進一次時間
-    ══════════════════════════════════════════════════════════════ */
+      情境 C：日/月間隔 + 小時/分鐘步進
+        → 對每個步進「日期」，從 startTime 到 endTime 每步進一次時間
+        例：開始 03/02 10:00，結束 03/04 12:00，間隔 1日 1小時
+        → 03/02: 10,11,12  03/03: 10,11,12  03/04: 10,11,12
+    */
     function buildRows() {
       const sd = document.getElementById('startDate').value;
       const ed = document.getElementById('endDate').value;
       const st = document.getElementById('startTime').value || '00:00';
       const et = document.getElementById('endTime').value || '00:00';
-      if (!sd || !ed) { toast('請填寫日期', 'err'); return null; }
+      if (!sd || !ed) return null;  // 靜默返回，等用戶補完
 
       const startDt = new Date(`${sd}T${st}:00`);
       const endDt = new Date(`${ed}T${et}:00`);
-      if (startDt > endDt) { toast('結束日期時間必須晚於開始', 'err'); return null; }
+      if (isNaN(startDt) || isNaN(endDt)) return null;
+      if (startDt > endDt) return null; // 靜默
 
       const [M, D, H, N] = getIv();
-      if (M === 0 && D === 0 && H === 0 && N === 0) { toast('間隔不能全為 0', 'err'); return null; }
+      if (M === 0 && D === 0 && H === 0 && N === 0) return null;
 
       const colC = document.getElementById('colC').value;
       const rows = [];
-
       const hasDateStep = M > 0 || D > 0;
       const hasTimeStep = H > 0 || N > 0;
 
       if (hasDateStep && hasTimeStep) {
-        /* ── 情境 C：每日 × 時間步進 ─────────────────────── */
-        // startTime 和 endTime 是「每日的時間範圍」
+        // 情境 C
         const [sh, sm] = st.split(':').map(Number);
         const [eh, em] = et.split(':').map(Number);
-        const startMinOfDay = sh * 60 + sm;
-        const endMinOfDay = eh * 60 + em;
-        const stepMins = H * 60 + N;
+        const sMin = sh * 60 + sm, eMin = eh * 60 + em, step = H * 60 + N;
+        if (step <= 0) return rows;
 
-        // 建立日期清單
         let curDay = new Date(`${sd}T00:00:00`);
         const endDay = new Date(`${ed}T00:00:00`);
-
         while (curDay <= endDay) {
-          // 該日從 startTime 到 endTime 每步進
-          let minOfDay = startMinOfDay;
-          while (minOfDay <= endMinOfDay) {
-            const entry = new Date(curDay);
-            entry.setHours(Math.floor(minOfDay / 60), minOfDay % 60, 0, 0);
-            rows.push({ a: fmtA(entry), b: 'O', c: colC });
-            minOfDay += stepMins;
-            if (stepMins <= 0) break;
+          for (let m = sMin; m <= eMin; m += step) {
+            const e = new Date(curDay);
+            e.setHours(Math.floor(m / 60), m % 60, 0, 0);
+            rows.push({ a: fmtA(e), b: 'O', c: colC });
           }
-          // 推進日期
-          const nextDay = new Date(curDay);
-          if (M > 0) nextDay.setMonth(nextDay.getMonth() + M);
-          if (D > 0) nextDay.setDate(nextDay.getDate() + D);
-          if (nextDay <= curDay) break;
-          curDay = nextDay;
+          const nx = new Date(curDay);
+          if (M > 0) nx.setMonth(nx.getMonth() + M);
+          if (D > 0) nx.setDate(nx.getDate() + D);
+          if (nx <= curDay) break;
+          curDay = nx;
         }
 
       } else if (hasDateStep) {
-        /* ── 情境 A：只有日期步進，每日 × startTime ────────── */
-        let cur = new Date(`${sd}T${st}:00`);
-        const endDay = new Date(`${ed}T${et}:00`);
-        while (cur <= endDay) {
-          rows.push({ a: fmtA(cur), b: 'O', c: colC });
-          const next = new Date(cur);
-          if (M > 0) next.setMonth(next.getMonth() + M);
-          if (D > 0) next.setDate(next.getDate() + D);
-          if (next <= cur) break;
-          cur = next;
-        }
-
-      } else {
-        /* ── 情境 B：只有時間步進 ───────────────────────────── */
+        // 情境 A
         let cur = new Date(startDt);
         while (cur <= endDt) {
           rows.push({ a: fmtA(cur), b: 'O', c: colC });
-          const next = new Date(cur);
-          next.setHours(next.getHours() + H);
-          next.setMinutes(next.getMinutes() + N);
-          if (next <= cur) break;
-          cur = next;
+          const nx = new Date(cur);
+          if (M > 0) nx.setMonth(nx.getMonth() + M);
+          if (D > 0) nx.setDate(nx.getDate() + D);
+          if (nx <= cur) break;
+          cur = nx;
+        }
+
+      } else {
+        // 情境 B
+        let cur = new Date(startDt);
+        while (cur <= endDt) {
+          rows.push({ a: fmtA(cur), b: 'O', c: colC });
+          const nx = new Date(cur);
+          nx.setHours(nx.getHours() + H);
+          nx.setMinutes(nx.getMinutes() + N);
+          if (nx <= cur) break;
+          cur = nx;
         }
       }
-
       return rows;
     }
 
-    /* ══ 預覽 ═════════════════════════════════════════════════════ */
-    let cached = [];
-    function doPreview() {
-      const rows = buildRows();
-      if (!rows) return;
-      if (rows.length === 0) { toast('無資料，請確認日期範圍與間隔', 'warn'); return; }
-      cached = rows;
+    /* ── 即時預覽（防抖 120ms）─────────────────────────────── */
+    let cached = [], _dt;
+    function autoPreview() {
+      refreshAmpm(); ivHint();
+      clearTimeout(_dt);
+      _dt = setTimeout(renderPreview, 120);
+    }
 
+    function renderPreview() {
+      const hint = document.getElementById('prevHint');
+      const tbl = document.getElementById('prevTable');
+      const rows = buildRows();
+
+      if (!rows) {
+        // 資料不足，顯示提示
+        hint.textContent = '請填寫上方日期、時間與間隔，結果將即時顯示於此。';
+        hint.style.display = ''; tbl.style.display = 'none';
+        document.getElementById('pillRow').innerHTML = '';
+        document.getElementById('sendBtn').disabled = true;
+        cached = []; return;
+      }
+
+      if (rows.length === 0) {
+        hint.textContent = '此範圍與間隔無法產生任何資料，請重新確認。';
+        hint.style.display = ''; tbl.style.display = 'none';
+        document.getElementById('pillRow').innerHTML = '';
+        document.getElementById('sendBtn').disabled = true;
+        cached = []; return;
+      }
+
+      cached = rows;
       const body = document.getElementById('prevBody');
       body.innerHTML = '';
       rows.forEach((r, i) => {
@@ -830,8 +825,7 @@
         body.appendChild(tr);
       });
 
-      const LIMIT = 1000;
-      const over = rows.length > LIMIT;
+      const LIMIT = 1000, over = rows.length > LIMIT;
       document.getElementById('pillRow').innerHTML = `
     <div class="pill">總筆數 <b>${rows.length}</b></div>
     <div class="pill">第一筆 <b>${rows[0].a}</b></div>
@@ -840,25 +834,32 @@
 
       if (over) notify('列數超出提醒', `共 ${rows.length} 筆，超過 ${LIMIT} 列，請確認 Sheet 空間`);
 
-      document.getElementById('prevCard').style.display = '';
+      hint.style.display = 'none'; tbl.style.display = '';
       document.getElementById('sendBtn').disabled = false;
-      toast(`已產生 ${rows.length} 筆預覽`, 'ok');
-      setTimeout(() => document.getElementById('prevCard').scrollIntoView({ behavior: 'smooth' }), 80);
     }
 
+    /* ── 清除 ─────────────────────────────────────────────── */
     function doClear() {
-      document.getElementById('prevCard').style.display = 'none';
+      ['startDate', 'startTime', 'endDate', 'endTime', 'colC'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('iM').value = 0;
+      document.getElementById('iD').value = 1;
+      document.getElementById('iH').value = 0;
+      document.getElementById('iN').value = 0;
+      refreshAmpm(); ivHint();
+      document.getElementById('prevBody').innerHTML = '';
+      document.getElementById('pillRow').innerHTML = '';
+      document.getElementById('prevHint').textContent = '請填寫上方日期、時間與間隔，結果將即時顯示於此。';
+      document.getElementById('prevHint').style.display = '';
+      document.getElementById('prevTable').style.display = 'none';
       document.getElementById('sendBtn').disabled = true;
       cached = [];
     }
 
-    function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-
-    /* ══ 寫入 ═════════════════════════════════════════════════════ */
+    /* ── 寫入 Google Sheet ────────────────────────────────── */
     async function doSend() {
       const url = document.getElementById('apiUrl').value.trim();
       if (!url) { toast('請填寫 Apps Script URL', 'err'); return; }
-      if (!cached.length) { toast('請先預覽', 'warn'); return; }
+      if (!cached.length) { toast('請先確認預覽有資料', 'warn'); return; }
       const btn = document.getElementById('sendBtn');
       btn.disabled = true; btn.textContent = '⏳ 寫入中...';
       toast('正在寫入…', 'warn');
@@ -876,17 +877,15 @@
       }
     }
 
-    /* ══ Toast ════════════════════════════════════════════════════ */
+    /* ── Toast ───────────────────────────────────────────── */
     let _tt;
     function toast(msg, type = '') {
       const el = document.getElementById('toast');
-      el.textContent = msg;
-      el.className = 'show ' + type;
-      clearTimeout(_tt);
-      _tt = setTimeout(() => { el.className = ''; }, 4200);
+      el.textContent = msg; el.className = 'show ' + type;
+      clearTimeout(_tt); _tt = setTimeout(() => { el.className = ''; }, 4200);
     }
 
-    /* ══ 系統通知 ════════════════════════════════════════════════ */
+    /* ── 系統通知 ─────────────────────────────────────────── */
     async function notify(title, body) {
       if (!('Notification' in window)) return;
       if (Notification.permission === 'default') await Notification.requestPermission();
@@ -898,6 +897,8 @@
         new Notification(title, { body, icon: './icons/icon-192.png' });
       }
     }
+
+    function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
   </script>
 </body>
 
