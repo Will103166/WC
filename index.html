@@ -389,6 +389,11 @@
       color: #fff;
     }
 
+    .btn-w {
+      background: linear-gradient(135deg, #0891b2, #0e7490);
+      color: #fff;
+    }
+
     .btn:disabled {
       opacity: .4;
       cursor: not-allowed;
@@ -609,6 +614,7 @@
 
     <!-- 按鈕 -->
     <div class="brow">
+      <button class="btn btn-w" onclick="renderPreview()">🔄 強制更新</button>
       <button class="btn btn-s" id="sendBtn" onclick="doSend()" disabled>🚀 寫入 Google Sheet</button>
       <button class="btn btn-d" onclick="doClear()">🗑 清除</button>
     </div>
@@ -701,7 +707,7 @@
       const y = dt.getFullYear(), mo = dt.getMonth() + 1, d = dt.getDate();
       const h24 = dt.getHours(), m = dt.getMinutes();
       const isAm = h24 < 12, h12 = h24 % 12 === 0 ? 12 : h24 % 12;
-      return `${y}/${mo}/${d} ${isAm ? '上午' : '下午'} ${h12}:${pad(m)}`;
+      return `${y}/${pad(mo)}/${pad(d)} ${isAm ? '上午' : '下午'} ${h12}:${pad(m)}`;
     }
 
     /* ── 產生排程 ─────────────────────────────────────────── */
