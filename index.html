@@ -394,6 +394,36 @@
       color: #fff;
     }
 
+    /* Custom date input */
+    .date-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .date-wrap input[type="text"] {
+      flex: 1;
+      letter-spacing: 0.04em;
+    }
+
+    .cal-btn {
+      background: var(--bg3);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      color: var(--tx2);
+      font-size: 1.1rem;
+      padding: 9px 10px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .15s;
+      line-height: 1;
+    }
+
+    .cal-btn:hover {
+      background: var(--bdr);
+    }
+
     .btn:disabled {
       opacity: .4;
       cursor: not-allowed;
@@ -569,7 +599,15 @@
       <div class="row">
         <div class="fld">
           <label>開始日期</label>
-          <input type="date" id="startDate">
+          <div class="date-wrap">
+            <input type="text" id="startDate" placeholder="YYYY/MM/DD" maxlength="10"
+              oninput="onDateText('startDate','_startDatePicker')" autocomplete="off">
+            <button class="cal-btn" onclick="document.getElementById('_startDatePicker').showPicker()"
+              type="button">📅</button>
+            <input type="date" id="_startDatePicker"
+              style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;"
+              onchange="onDatePick('_startDatePicker','startDate')">
+          </div>
         </div>
         <div class="fld">
           <label>開始時間</label>
@@ -582,7 +620,15 @@
       <div class="row" style="margin-bottom:0">
         <div class="fld">
           <label>結束日期</label>
-          <input type="date" id="endDate">
+          <div class="date-wrap">
+            <input type="text" id="endDate" placeholder="YYYY/MM/DD" maxlength="10"
+              oninput="onDateText('endDate','_endDatePicker')" autocomplete="off">
+            <button class="cal-btn" onclick="document.getElementById('_endDatePicker').showPicker()"
+              type="button">📅</button>
+            <input type="date" id="_endDatePicker"
+              style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;"
+              onchange="onDatePick('_endDatePicker','endDate')">
+          </div>
         </div>
         <div class="fld">
           <label>結束時間</label>
@@ -650,6 +696,29 @@
       const isL = document.body.classList.contains('light');
       document.getElementById('themeBtn').textContent = isL ? '🌙 深色模式' : '☀️ 白色模式';
       localStorage.setItem('theme', isL ? 'light' : 'dark');
+    }
+
+    /* ── 日期文字輸入同步 ────────────────────────────────── */
+    // 從 text 欄輸入 YYYY/MM/DD → 同步到隱藏 date input
+    function onDateText(textId, pickerId) {
+      const v = document.getElementById(textId).value.trim();
+      // 自動補斜線
+      const digits = v.replace(/\D/g, '');
+      let fmt = digits;
+      if (digits.length > 4) fmt = digits.slice(0, 4) + '/' + digits.slice(4);
+      if (digits.length > 6) fmt = digits.slice(0, 4) + '/' + digits.slice(4, 6) + '/' + digits.slice(6, 8);
+      if (fmt !== v) document.getElementById(textId).value = fmt;
+      // 同步 date picker（需格式 YYYY-MM-DD）
+      if (/^\d{4}\/\d{2}\/\d{2}$/.test(fmt)) {
+        document.getElementById(pickerId).value = fmt.replace(/\//g, '-');
+      }
+      autoPreview();
+    }
+    // 從日曆選完 → 同步到 text 欄
+    function onDatePick(pickerId, textId) {
+      const v = document.getElementById(pickerId).value; // YYYY-MM-DD
+      if (v) document.getElementById(textId).value = v.replace(/-/g, '/');
+      autoPreview();
     }
 
     /* ── 初始化 ───────────────────────────────────────────── */
@@ -723,17 +792,21 @@
         例：開始 03/02 10:00，結束 03/04 12:00，間隔 1日 1小時
         → 03/02: 10,11,12  03/03: 10,11,12  03/04: 10,11,12
     */
+    // 將 YYYY/MM/DD 轉為 YYYY-MM-DD（供 Date 解析）
+    function toIso(s) { return s ? s.replace(/\//g, '-') : ''; }
+
     function buildRows() {
-      const sd = document.getElementById('startDate').value;
-      const ed = document.getElementById('endDate').value;
+      const sdRaw = document.getElementById('startDate').value;
+      const edRaw = document.getElementById('endDate').value;
       const st = document.getElementById('startTime').value || '00:00';
       const et = document.getElementById('endTime').value || '00:00';
-      if (!sd || !ed) return null;  // 靜默返回，等用戶補完
+      if (!sdRaw || !edRaw) return null;
 
+      const sd = toIso(sdRaw), ed = toIso(edRaw);
       const startDt = new Date(`${sd}T${st}:00`);
       const endDt = new Date(`${ed}T${et}:00`);
       if (isNaN(startDt) || isNaN(endDt)) return null;
-      if (startDt > endDt) return null; // 靜默
+      if (startDt > endDt) return null;
 
       const [M, D, H, N] = getIv();
       if (M === 0 && D === 0 && H === 0 && N === 0) return null;
